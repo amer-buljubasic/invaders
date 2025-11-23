@@ -11,12 +11,12 @@ RSpec.describe CodeInvaders::Locator do
   end
 
   let(:radar_sample) do
-    [
-      "o---o--o-",
-      "-o-o-o-o-",
-      "-------oo",
-      "-------oo"
-    ]
+    <<~TXT
+      o---o--o-
+      -o-o-o-o-
+      -------oo
+      -------oo
+    TXT
   end
 
   let(:missing_invader) { ["abc"] }

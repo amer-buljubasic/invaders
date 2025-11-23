@@ -9,6 +9,5 @@ RSpec.describe CodeInvaders do
     expect(defined?(CodeInvaders::Invader)).to eq("constant")
     expect(defined?(CodeInvaders::Locator)).to eq("constant")
     expect(defined?(CodeInvaders::Printer)).to eq("constant")
-    expect(defined?(CodeInvaders::RadarSample)).to eq("constant")
   end
 end
