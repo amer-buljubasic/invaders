@@ -18,51 +18,40 @@ module CodeInvaders
     attr_reader :invaders, :radar_sample
 
     def find_invaders
-      invaders.each_with_index do |invader, index|
-        locations[index] = locate_invader(invader:)
+      (0..total_rows - 1).each do |row|
+        (0..row_length(row)).each do |col|
+          invaders.each_with_index do |invader, index|
+            next if row + invader.length > total_rows
+
+            full_match = invader_found?(invader, row, col)
+
+            locations[index] << { x: col, y: row } if full_match
+          end
+        end
       end
 
       locations
     end
 
-    def locate_invader(invader:)
-      positions = []
+    def invader_found?(invader, row, col)
+      invader.each_with_index.all? do |i_row, index|
+        current_row = transformed_sample[row + index]
+        next false if col + i_row.size > current_row.size
 
-      (0..max_row(invader)).each do |row|
-        (0..max_col(invader)).each do |col|
-          full_match = true
-          invader.each_with_index do |i_row, index|
-            if transformed_sample[row + index][col, i_row.length] != i_row
-              full_match = false
-              break
-            end
-          end
-
-          positions << { x: col, y: row } if full_match
-        end
+        current_row[col, i_row.size] == i_row
       end
-
-      positions
     end
 
-    def max_row(invader)
-      total_rows - invader.length
-    end
-
-    def max_col(invader)
-      total_cols - invader.map(&:length).min
+    def row_length(row)
+      transformed_sample[row].length
     end
 
     def total_rows
       @total_rows ||= transformed_sample.length
     end
 
-    def total_cols
-      @total_cols ||= transformed_sample.map(&:length).max
-    end
-
     def locations
-      @locations ||= {}
+      @locations ||= Hash.new { |h, k| h[k] = [] }
     end
 
     def transformed_sample

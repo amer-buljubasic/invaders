@@ -22,14 +22,8 @@ module CodeInvaders
       "o-o--o-o"
     ].freeze
 
-    UFO = [
-      "--oo",
-      "-----o",
-      "-o--"
-    ].freeze
-
     def self.all
-      [NEBULA, STELLAR, UFO]
+      [NEBULA, STELLAR]
     end
   end
 end
