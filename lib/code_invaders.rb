@@ -3,7 +3,6 @@
 require_relative "code_invaders/version"
 require "code_invaders/locator"
 require "code_invaders/invader"
-require "code_invaders/radar_sample"
 require "code_invaders/printer"
 require "code_invaders/cli"
 
