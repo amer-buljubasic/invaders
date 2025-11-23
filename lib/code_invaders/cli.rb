@@ -24,9 +24,9 @@ module CodeInvaders
         exit 1
       end
 
-      data = File.read(file_path)
+      radar_sample = File.read(file_path)
 
-      CodeInvaders.track
+      CodeInvaders.track(radar_sample:)
     end
   end
 end

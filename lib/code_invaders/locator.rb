@@ -32,7 +32,7 @@ module CodeInvaders
         (0..max_col(invader)).each do |col|
           full_match = true
           invader.each_with_index do |i_row, index|
-            if radar_sample[row + index][col, i_row.length] != i_row
+            if transformed_sample[row + index][col, i_row.length] != i_row
               full_match = false
               break
             end
@@ -54,15 +54,19 @@ module CodeInvaders
     end
 
     def total_rows
-      @total_rows ||= radar_sample.length
+      @total_rows ||= transformed_sample.length
     end
 
     def total_cols
-      @total_cols ||= radar_sample.map(&:length).max
+      @total_cols ||= transformed_sample.map(&:length).max
     end
 
     def locations
       @locations ||= {}
+    end
+
+    def transformed_sample
+      @transformed_sample ||= radar_sample.split("\n")
     end
   end
 end

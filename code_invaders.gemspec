@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
     ls.readlines("\x0", chomp: true).reject do |f|
       (f == gemspec) ||
         f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
+      f.end_with?(".gem")
     end
   end
   spec.files << "exe/code_invaders" unless spec.files.include?("exe/code_invaders")

@@ -10,9 +10,8 @@ require "code_invaders/cli"
 module CodeInvaders
   class Error < StandardError; end
 
-  def self.track
+  def self.track(radar_sample:)
     invaders = Invader.all
-    radar_sample = RadarSample::SAMPLE
     results = Locator.run(invaders:, radar_sample:)
     Printer.print_results(results:)
   end
