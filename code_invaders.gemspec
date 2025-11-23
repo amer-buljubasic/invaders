@@ -5,20 +5,21 @@ require_relative "lib/code_invaders/version"
 Gem::Specification.new do |spec|
   spec.name = "code_invaders"
   spec.version = CodeInvaders::VERSION
-  spec.authors = ["AmerBuljubasic"]
-  spec.email = ["amer.buljubasic@comparativeagility.com"]
+  spec.authors = ["amer-buljubasic"]
+  spec.email = ["buljubasic.amer@gmail.com"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "Space invaders are upon us!"
+  spec.description = "Code invaders wilt take a radar sample as an argument and reveal possible locations of those
+                      pesky invaders."
+  spec.homepage = "https://github.com/amer-buljubasic/invaders"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
+  # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = "https://github.com/amer-buljubasic/invaders"
+  spec.metadata["changelog_uri"] = "https://github.com/amer-buljubasic/invaders/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -29,6 +30,9 @@ Gem::Specification.new do |spec|
         f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
     end
   end
+  spec.files << "exe/code_invaders" unless spec.files.include?("exe/code_invaders")
+  spec.files << "lib/code_invaders/cli.rb" unless spec.files.include?("lib/code_invaders/cli.rb")
+
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
